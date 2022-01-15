@@ -10,9 +10,10 @@
     <title>MyList</title>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
-    
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    
 </head>
 <body>
     <!--<div class="form-group"> </div> -->
@@ -54,8 +55,9 @@
                     <td><span th:text="${toDoItem.description}"></span><br></td>
                     
                     <td>
-                        <i class="fas fa-edit"></i>
-                        <section th:replace="layouts/editItem.html"></section>
+                        
+                        <section th:replace="layouts/editTask :: editTask"></section>
+                        <section th:replace="layouts/editButton :: editButton"></section>
                     </td>
 
                     <td>
@@ -67,6 +69,9 @@
                     </td>
                 </tr>
             </table><br>
+        </form>
+        <form method="post" th:action="@{/logout}">
+            <a href="#" onclick="this.parentNode.submit();" class="btn btn-primary btn-block">Log out</a>
         </form>
     </div>
 

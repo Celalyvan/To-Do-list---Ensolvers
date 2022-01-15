@@ -61,8 +61,15 @@ public class StartController {
 
         return "redirect:/";
     }
+    
+    @GetMapping("/edit/{id_item}")
+    public String edit(ToDoList toEdit){
+
+        toEdit = toDoListService.findToDoList(toEdit.getId_item());
+
+        System.out.println("toEdit = " + toEdit);
+        
+        return "edit";
+    }
 
 }
-/*
-*   todo: agregar vista de edit y persistencia y seguridad!
-* */
