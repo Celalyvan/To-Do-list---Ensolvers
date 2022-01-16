@@ -40,6 +40,8 @@ public class StartController {
     @PostMapping("/update")
     public String update(@RequestBody String request){
 
+        System.out.println("request = " + request);
+
         Long id = Long.parseLong(request);
 
         var tdlToChange = toDoListService.findToDoList(id);
@@ -62,14 +64,14 @@ public class StartController {
         return "redirect:/";
     }
     
-    @GetMapping("/edit/{id_item}")
-    public String edit(ToDoList toEdit){
+    @PostMapping("/edit")
+    public String edit(@RequestBody ArrayList toEdit){
 
-        toEdit = toDoListService.findToDoList(toEdit.getId_item());
+//        toEdit = toDoListService.findToDoList(toEdit.getId_task());
 
         System.out.println("toEdit = " + toEdit);
         
-        return "edit";
+        return "redirect:/";
     }
 
 }

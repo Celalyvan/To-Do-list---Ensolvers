@@ -8,14 +8,14 @@ import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Data
-@Table(name="todoitems")
+@Table(name="todotasks")
 public class ToDoList {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_item;
+    private Long id_task;
 
     @NotEmpty
     private String description;

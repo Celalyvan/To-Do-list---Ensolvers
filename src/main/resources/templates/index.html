@@ -16,12 +16,12 @@
     
 </head>
 <body>
-    <!--<div class="form-group"> </div> -->
+    
     <div style="width:45%; margin:0 auto; display: flex;">
         <form th:action="@{/add}" method="post" >
             <label for="description">Add task:</label>
 
-                <input  type="text" name="description" id="description">
+                <input  type="text" name="description" id="description" required>
             
                 <button type="submit" class="btn btn-success">Save</button>
             
@@ -29,40 +29,27 @@
         </form>
     </div>  
  
-<!--    <div>     BUILD TO DELETE ALL DONE
-        <form th:action="@{/add}" method="post" >
-            <label for="description">Add task:</label>
-            <input type="text" name="description" id="description">
-            <button type="submit">Save</button>
-        </form>
-    </div>  -->
 
     <div style="margin: auto; width: 50%;">
         <form th:action="@{/save}" method="post" th:object="${toDoList}">
             <br/>
             <table class="table table-hover">
                 <tr th:each="toDoItem: ${toDoList}" style="text-align: center;"><!-- forma para hacer foreach-->
-                    <td><span th:text="${toDoItem.id_item}"></span><br></td>
+                    <td><span th:text="${toDoItem.id_task}"></span><br></td>
                     <td>
                         <div class="btn-group-toggle" data-toggle="buttons">
                             <label class="btn btn-primary">
                                 
-                                <input class="check" type="checkbox" name="active" th:checked="${toDoItem.is_checked}" th:value="${toDoItem.id_item}" th:id="check + ${toDoItem.id_item}"/>
+                                <input class="check" type="checkbox" name="active" th:checked="${toDoItem.is_checked}" th:value="${toDoItem.id_task}" th:id="check + ${toDoItem.id_task}"/>
                             </label>
                         </div>
                     </td>
                     
                     <td><span th:text="${toDoItem.description}"></span><br></td>
-                    
-                    <td>
-                        
-                        <section th:replace="layouts/editTask :: editTask"></section>
-                        <section th:replace="layouts/editButton :: editButton"></section>
-                    </td>
 
                     <td>
                         <button type="button" class="btn btn-danger" style="border-radius: 50%;">
-                            <a th:href="@{/delete/} + ${toDoItem.id_item}" style="color: seashell;" >
+                            <a th:href="@{/delete/} + ${toDoItem.id_task}" style="color: seashell;" >
                                 <i class="fas fa-times"></i>
                             </a>
                         </button>
@@ -70,6 +57,8 @@
                 </tr>
             </table><br>
         </form>
+        
+        <br/>
         <form method="post" th:action="@{/logout}">
             <a href="#" onclick="this.parentNode.submit();" class="btn btn-primary btn-block">Log out</a>
         </form>

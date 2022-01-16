@@ -34,7 +34,7 @@ public class ToDoListService implements IToDoListService{
 
 
 
-    @Override  /* revisar si es necesario*/
+    @Override
     @Transactional(readOnly = true)
     public ToDoListService findPersona(ToDoList toDoList) {
         return null;
